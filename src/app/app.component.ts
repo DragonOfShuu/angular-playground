@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { PropBindedComponent } from '../propBind/propbinded.component';
+import { PropBindedComponent } from './propBind/propbinded.component';
+import { OsViewerComponent } from './os-viewer/os-viewer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, PropBindedComponent],
+  imports: [RouterOutlet, PropBindedComponent, OsViewerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass',
 })

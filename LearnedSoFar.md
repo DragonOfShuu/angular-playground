@@ -69,3 +69,22 @@ export class UselessComponent {
     }
 }
 ```
+
+# @Input (similar to React props)
+
+@Input is for passing data to a lower component. This is similar to props in React.
+
+@Input in use:
+```ts
+export class OsViewerComponent {
+  @Input({ required: true }) osData: OSData = { id: '', name: '' };
+}
+```
+
+```ts
+@for (os of operatingSystems; track os.id) {
+    <app-os-viewer [osData]='os' />
+}
+```
+
+https://angular.dev/tutorials/learn-angular/8-input
