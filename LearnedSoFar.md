@@ -87,4 +87,57 @@ export class OsViewerComponent {
 }
 ```
 
-https://angular.dev/tutorials/learn-angular/8-input
+# @Output (similar to passing a function to a child for a child to run in React)
+
+@Output is for passing data to a parent component. This is simliar to a parent passing a function to a child for the child to run the function in React.
+
+## @Output in use
+Child:
+```tsx
+// Template
+<button (click)="increment()" class="button">
+    Increment ({{count}})
+</button>
+
+// In class
+count = 0;
+@Output() countChanged = new EventEmitter<number>();
+
+increment() {
+this.count++;
+this.countChanged.emit(this.count);
+}
+```
+Parent:
+```tsx
+// Template
+<p>
+    Parent count: {{parentCount}}
+</p>
+<app-counter (countChanged)="consumeNewCount($event)" />
+
+// In class
+parentCount: number = 0;
+
+consumeNewCount(count: number) {
+    this.parentCount = count;
+}
+```
+
+# @defer (similar to React Suspense)
+
+`@defer` lets you load contained elements after they load, or only when they need to be loaded. Similar to React Suspense, but probably better.
+
+## @defer in use
+```tsx
+// Inside of template
+@defer (on viewport) { // Contained elements only start loading once the defer is in view
+    <app-comment CommentText="Angular is such a cool framework actually. React is still amazing, but I love how object oriented angular is. It's pretty epic." />
+} @placeholder { // Placeholder before we start loading
+    <p>Scroll down a little further...</p>
+} @loading (minimum 1s) { // Elements to show while we are loading (minimum 1s meaning the loading will show for at least one second)
+    <p>Positive Comment loading...</p>
+}
+```
+
+https://angular.dev/tutorials/learn-angular/11-optimizing-images

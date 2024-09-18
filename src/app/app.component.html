@@ -5,6 +5,11 @@
     }
   </div>
   <app-propbinded />
+  <p>
+    Parent count: {{parentCount}}
+  </p>
+  <app-counter (countChanged)="consumeNewCount($event)" />
+  <app-defer-comments />
 </main>
 
 
