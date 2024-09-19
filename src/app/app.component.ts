@@ -4,11 +4,12 @@ import { PropBindedComponent } from './propBind/propbinded.component';
 import { OsViewerComponent } from './os-viewer/os-viewer.component';
 import { CounterComponent } from "./counter/counter.component";
 import { DeferCommentsComponent } from "./defer-comments/defer-comments.component";
+import { PuckImageComponent } from "./puck-image/puck-image.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, PropBindedComponent, OsViewerComponent, CounterComponent, DeferCommentsComponent],
+  imports: [RouterOutlet, PropBindedComponent, OsViewerComponent, CounterComponent, DeferCommentsComponent, PuckImageComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass',
 })

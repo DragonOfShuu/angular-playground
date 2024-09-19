@@ -140,4 +140,17 @@ consumeNewCount(count: number) {
 }
 ```
 
-https://angular.dev/tutorials/learn-angular/11-optimizing-images
+# Optimizing Images (Similar to NextJS Image)
+
+You can use this by first adding `NgOptimizedImage` to your imports, then use `ngSrc` to link your image. Make sure to declare a width and heigh, so that the image can take on the correct height before it is fully loaded.
+
+## NgOptimizedImage in Use
+
+```tsx
+    // Imports
+    [NgOptimizedImage]
+    // Template
+    <img ngSrc="/puck-image.png" alt="Puck from the anime re:zero" width="512" height="512" />
+```
+
+https://angular.dev/tutorials/learn-angular/12-enable-routing
