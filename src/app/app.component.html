@@ -1,17 +1,9 @@
+<nav class="mainNav">
+  @for (link of links; track $index) {
+    <a routerLink={{link.url}}>{{link.name}}</a>
+  }
+</nav>
+
 <main>
-  <div class="flex flex-col gap-2">
-    @for (os of operatingSystems; track os.id) {
-      <app-os-viewer [osData]='os' />
-    }
-  </div>
-  <app-propbinded />
-  <p>
-    Parent count: {{parentCount}}
-  </p>
-  <app-counter (countChanged)="consumeNewCount($event)" />
-  <app-defer-comments />
-  <app-puck-image />
+  <router-outlet />
 </main>
-
-
-<router-outlet />

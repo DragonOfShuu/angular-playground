@@ -1,28 +1,28 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { PropBindedComponent } from './propBind/propbinded.component';
-import { OsViewerComponent } from './os-viewer/os-viewer.component';
-import { CounterComponent } from "./counter/counter.component";
-import { DeferCommentsComponent } from "./defer-comments/defer-comments.component";
-import { PuckImageComponent } from "./puck-image/puck-image.component";
+import { RouterLink, RouterOutlet } from '@angular/router';
+
+type Route = {
+  name: string,
+  url: string,
+}
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, PropBindedComponent, OsViewerComponent, CounterComponent, DeferCommentsComponent, PuckImageComponent],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass',
 })
-export class AppComponent {
-  title = 'Call Center Angular';
-  operatingSystems: { id: string; name: string }[] = [
-    { id: 'win', name: 'Windows' },
-    { id: 'osx', name: 'MacOS' },
-    { id: 'linux', name: 'Linux' },
-  ];
-  parentCount: number = 0;
 
-  consumeNewCount(count: number) {
-    this.parentCount = count;
-  }
+export class AppComponent {
+  links: Route[] = [
+    {
+      name: 'home',
+      url: '/'
+    },
+    {
+      name: 'user',
+      url: '/user/'
+    }
+  ]
 }

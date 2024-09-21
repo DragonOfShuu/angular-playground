@@ -153,4 +153,42 @@ You can use this by first adding `NgOptimizedImage` to your imports, then use `n
     <img ngSrc="/puck-image.png" alt="Puck from the anime re:zero" width="512" height="512" />
 ```
 
-https://angular.dev/tutorials/learn-angular/12-enable-routing
+# Enable Routing
+
+Create an `app.routes.ts`, that exports a constant called `routes` of type `Routes`.
+
+```ts
+import {Routes} from '@angular/router';
+export const routes: Routes = [];
+```
+
+Now, inside the `app.config.ts` add a provider in the `providers` array called `provideRouter`, and pass the `routes` variable as a parameter.
+
+```ts
+export const appConfig: ApplicationConfig = {
+  providers: [provideRouter(routes)],
+};
+```
+
+Finally, you can use the `<router-outlet />` to define where to display the page being routed to.
+
+# Define a Route
+
+In `app.routes.ts`, you can have an array that stores all of your routes. Make sure to use the `Routes` type. This will include a `path` (which already assumes a slash at the beginning), a `component`, and a `title`.
+
+```ts
+export const routes: Routes = [
+    {
+        component: UserPageComponent,
+        path: 'user'
+    }
+];
+```
+
+# RouterLink Directive
+
+All you have to do to enable routing in Angular is to import the `RouterLink` directive in your component's imports.
+
+Then, you use the anchor tag with the `routerLink` attribute in place of the href.
+
+https://angular.dev/tutorials/learn-angular/15-forms
