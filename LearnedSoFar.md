@@ -254,4 +254,60 @@ To submit the form, you can link to the method `(ngSubmit)` at the top of the fo
 (ngSubmit)="handleSubmit()"
 ```
 
-https://angular.dev/tutorials/learn-angular/15-forms
+# Form Validators
+
+You can add form validators by creating an array after the default `FormControl` value, and filling it with properties off of `Validators`, like so:
+
+```ts
+favAnimeForm = new FormGroup({
+  //                                 Right here
+  favoriteAnime: new FormControl('', Validators.required),
+  reasonFavAnime: new FormControl(''),
+  email: new FormControl('', [Validators.required, Validators.email])
+})
+```
+
+# Services
+
+Services are objects that you can let multiple components access, and they store logic and data inside them. They use the singleton structure; one is created, and all components reference it.
+
+## Creating a Service
+
+Use the `Injectable` decorator to mark it as provided in root. The cool thing is if this service is not used anywhere in your code, it is `tree-shaken`, meaning it is not delivered to the client at all.
+
+```ts
+@Injectable({
+  providedIn: 'root'
+})
+export class ActuallyGoodAnimeService {
+  anime: AnimeList = ["RE:Zero", "Angel Beats"];
+
+  getAnime() {
+    return this.anime;
+  }
+}
+```
+
+## Injection-Based Dependency Injection (Injecting a service)
+
+Simply use the `inject` method around the service class reference:
+
+```ts
+export class UserPageComponent {
+  actuallyGoodAnimeService = inject(ActuallyGoodAnimeService);
+}
+```
+
+All Angular has to actually do is grab the singleton reference that was created.
+
+## Constructor-Based Dependency Injection (Being given a service)
+
+Instead of using the `inject` method, you simply include the class in your constructor, like so:
+
+```ts
+constructor(private actuallyGoodAnimeService: ActuallyGoodAnimeService) {
+  this.goodAnimes = actuallyGoodAnimeService.getAnime();
+}
+```
+
+https://angular.dev/tutorials/learn-angular/22-pipes

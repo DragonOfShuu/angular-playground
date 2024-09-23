@@ -5,6 +5,12 @@
     <label class="flex flex-col">Why?
         <input type="text" formControlName="reasonFavAnime">
     </label>
+    <label class="flex flex-col">Email (so we can rage email later):
+        <input type="text" formControlName="email">
+    </label>
+    <button type="submit" class="button" [disabled]="!favAnimeForm.valid">
+      Submit
+    </button>
 </form>
 <pre>
     Favorite Anime: {{favAnimeForm.value.favoriteAnime}}
