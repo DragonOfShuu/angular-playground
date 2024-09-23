@@ -23,6 +23,10 @@ export class AppComponent {
     {
       name: 'user',
       url: '/user/'
+    },
+    {
+      name: 'best anime',
+      url: '/best-anime/'
     }
   ]
 }

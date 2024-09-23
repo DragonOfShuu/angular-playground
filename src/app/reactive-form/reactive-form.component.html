@@ -1,0 +1,12 @@
+<form class="flex flex-col gap-2" [formGroup]="favAnimeForm" (ngSubmit)="handleSubmit()">
+    <label>Favorite Anime
+        <input formControlName="favoriteAnime" type="text">
+    </label>
+    <label class="flex flex-col">Why?
+        <input type="text" formControlName="reasonFavAnime">
+    </label>
+</form>
+<pre>
+    Favorite Anime: {{favAnimeForm.value.favoriteAnime}}
+    Reason: {{favAnimeForm.value.reasonFavAnime}}
+</pre>

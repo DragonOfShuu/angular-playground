@@ -191,4 +191,67 @@ All you have to do to enable routing in Angular is to import the `RouterLink` di
 
 Then, you use the anchor tag with the `routerLink` attribute in place of the href.
 
+
+# Template Forms
+
+First, import the `FormsModule`, then on any forms input element, you can use a two-way binding ("banana in a box" `[()]`) for the property `ngModel` to bind a property to the value.
+
+## Template Forms in Use
+
+```html
+<input id="anime" type="text" [(ngModel)]="favoriteAnime"/>
+```
+```ts
+export class TemplateFormComponent {
+  favoriteAnime = '';
+}
+```
+
+## Getting the Form Values
+
+Double curly braces, like any other variable.
+
+```html
+<p>
+    Favorite Anime Answer: {{ favoriteAnime }}
+</p>
+```
+
+# Reactive Forms
+
+First, import the `ReactiveFormsModule`. Then you need to create a `FormGroup` with `FormControl`s inside your component class:
+
+```ts
+favAnimeForm = new FormGroup({
+  favoriteAnime: new FormControl(''),
+  reasonFavAnime: new FormControl(''),
+})
+```
+
+Then, you can use `formGroup` in your `form` element to link it, then use `formControlName` to link each name, like so:
+
+```html
+<form class="flex flex-col gap-2" [formGroup]="favAnimeForm" (ngSubmit)="handleSubmit()">
+    <label>Favorite Anime
+        <input formControlName="favoriteAnime" type="text">
+    </label>
+    <label class="flex flex-col">Why?
+        <input type="text" formControlName="reasonFavAnime">
+    </label>
+</form>
+```
+
+To use the form properties, you grab the `value` property, then the name:
+
+```ts
+Favorite Anime: {{favAnimeForm.value.favoriteAnime}}
+Reason: {{favAnimeForm.value.reasonFavAnime}}
+```
+
+To submit the form, you can link to the method `(ngSubmit)` at the top of the form:
+
+```ts
+(ngSubmit)="handleSubmit()"
+```
+
 https://angular.dev/tutorials/learn-angular/15-forms
