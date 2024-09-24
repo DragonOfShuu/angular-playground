@@ -310,4 +310,44 @@ constructor(private actuallyGoodAnimeService: ActuallyGoodAnimeService) {
 }
 ```
 
+# Pipes
+
+Pipes are pure functions that you use inside of templates to transform data. For example, making text in a component uppercase.
+
+```ts
+@Component({
+    ...
+    //         Using the pipe operator to transform
+    //         the given binded data to uppercase.
+    template: `{{ loudMessage | uppercase }}`,
+    imports: [UpperCasePipe],
+})
+class AppComponent {
+    loudMessage = 'we think you are doing great!'
+}
+```
+
+You can also pass data to pipes by using colons; you can chain colons as well:
+
+```ts
+{{timeToShow | date: 'medium'}}
+```
+
+Finally, you can also create pipes, using the pipe class decorator:
+```ts
+@Pipe({
+  name: 'star',
+  standalone: true
+})
+export class StarPipe implements PipeTransform {
+  transform(value: string, ...args: string[]): string {
+    return `🌟 ${value} 🌟`;
+  }
+}
+```
+
+# Conclusion
+
+And there you have it, the basics of Angular! Now it's time to get out there and write some awesome applications!
+
 https://angular.dev/tutorials/learn-angular/22-pipes
